@@ -8,3 +8,13 @@ C:\Users\akula\source\repos\NewEraLauncher\NewEraLauncher\obj\Debug\NewEraLaunch
 C:\Users\akula\source\repos\NewEraLauncher\NewEraLauncher\obj\Debug\NewEraLauncher.exe
 C:\Users\akula\source\repos\NewEraLauncher\NewEraLauncher\obj\Debug\NewEraLauncher.pdb
 C:\Users\akula\source\repos\NewEraLauncher\NewEraLauncher\obj\Debug\NewEraLauncher.defaultWindow.resources
+C:\Users\akula\Desktop\MinecraftModpackUpdater\NewEraLauncher\bin\Debug\NewEraLauncher.exe.config
+C:\Users\akula\Desktop\MinecraftModpackUpdater\NewEraLauncher\bin\Debug\NewEraLauncher.exe
+C:\Users\akula\Desktop\MinecraftModpackUpdater\NewEraLauncher\bin\Debug\NewEraLauncher.pdb
+C:\Users\akula\Desktop\MinecraftModpackUpdater\NewEraLauncher\obj\Debug\NewEraLauncher.csprojAssemblyReference.cache
+C:\Users\akula\Desktop\MinecraftModpackUpdater\NewEraLauncher\obj\Debug\NewEraLauncher.defaultWindow.resources
+C:\Users\akula\Desktop\MinecraftModpackUpdater\NewEraLauncher\obj\Debug\NewEraLauncher.Properties.Resources.resources
+C:\Users\akula\Desktop\MinecraftModpackUpdater\NewEraLauncher\obj\Debug\NewEraLauncher.csproj.GenerateResource.cache
+C:\Users\akula\Desktop\MinecraftModpackUpdater\NewEraLauncher\obj\Debug\NewEraLauncher.csproj.CoreCompileInputs.cache
+C:\Users\akula\Desktop\MinecraftModpackUpdater\NewEraLauncher\obj\Debug\NewEraLauncher.exe
+C:\Users\akula\Desktop\MinecraftModpackUpdater\NewEraLauncher\obj\Debug\NewEraLauncher.pdb

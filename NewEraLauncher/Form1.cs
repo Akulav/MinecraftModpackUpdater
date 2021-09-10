@@ -11,8 +11,8 @@ namespace NewEraLauncher
 {
     public partial class defaultWindow : Form
     {
-        public string version;
-        public string url;
+        public string[] result;
+        public string appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
         public defaultWindow()
         {
             InitializeComponent();
@@ -20,17 +20,24 @@ namespace NewEraLauncher
 
         private void updateBtn_Click(object sender, EventArgs e)
         {
-            startDownload();
+            updateBtn.Enabled = false;
+
+            //
+            int index = modpackList.SelectedIndex;
+
+            //
+
+            startDownload(result[index+index+1]);
             startInstall();
         }
 
-        private void startDownload()
+        private void startDownload(string url)
         {
             Thread thread = new Thread(() => {
                 WebClient client = new WebClient();
                 client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(client_DownloadProgressChanged);
                 client.DownloadFileCompleted += new AsyncCompletedEventHandler(client_DownloadFileCompleted);
-                client.DownloadFileAsync(new Uri(this.url), @"C:\NewEraCache\downloaded.zip");
+                client.DownloadFileAsync(new Uri(url), @"C:\NewEraCache\downloaded.zip");
             });
             thread.Start();
         }
@@ -40,8 +47,16 @@ namespace NewEraLauncher
             Thread thread = new Thread(() => {
                 try
                 {
-                    File.Copy(@"C:\Users\akula\AppData\\Roaming\.minecraft\launcher_accounts.json", @"C:\NewEraCache\launcher_accounts.json", true);
-                    Directory.Delete(@"C:\Users\akula\AppData\Roaming\.minecraft", true);
+                    File.Copy(appdata+@"\.minecraft\launcher_accounts.json", @"C:\NewEraCache\launcher_accounts.json", true);
+                }
+                catch (IOException)
+                {
+                    
+                }
+
+                try
+                {             
+                    Directory.Delete(appdata + @"\.minecraft", true);
                 }
                 catch (IOException)
                 {
@@ -65,9 +80,18 @@ namespace NewEraLauncher
         void client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
         {
             this.BeginInvoke((MethodInvoker)delegate {
-                progressLabel.Text = "Completed";
-                ZipFile.ExtractToDirectory(@"C:\NewEraCache\downloaded.zip", @"C:\Users\akula\AppData\Roaming\");
-                File.Copy(@"C:\NewEraCache\launcher_accounts.json", @"C:\Users\akula\AppData\\Roaming\.minecraft\launcher_accounts.json", true);
+                progressLabel.Text = "Downloaded.";
+                try
+                {
+                    ZipFile.ExtractToDirectory(@"C:\NewEraCache\downloaded.zip", appdata);
+                    File.Copy(@"C:\NewEraCache\launcher_accounts.json", appdata+@"\.minecraft\launcher_accounts.json", true);
+                }
+                catch (IOException)
+                {
+
+                }
+                updateBtn.Enabled = true;
+                progressLabel.Text = "Successfully installed.";
             });
         }
 
@@ -75,10 +99,15 @@ namespace NewEraLauncher
         {
             using (WebClient client = new WebClient())
             {
-                string update_data = client.DownloadString("https://raw.githubusercontent.com/Akulav/MinecraftModpackUpdater/main/update.txt");
-                var result = Regex.Split(update_data, "\r\n|\r|\n");
-                this.version = result[0];
-                this.url = result[1];
+                string update_data = client.DownloadString("https://raw.githubusercontent.com/Akulav/MinecraftModpackUpdater/main/modpack_list.txt");
+                result = Regex.Split(update_data, "\r\n|\r|\n");
+                for (int i = 0; i < result.Length; i++)
+                {
+                    if (i % 2 == 0)
+                    {
+                        modpackList.Items.Add(result[i]);
+                    }
+                }
             }
 
             string folderPath = @"C:\NewEraCache";
