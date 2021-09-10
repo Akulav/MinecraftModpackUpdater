@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewEraLauncher", "NewEraLauncher\NewEraLauncher.csproj", "{C267EEE4-1C3C-4A0F-87D8-37B77599AF84}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C267EEE4-1C3C-4A0F-87D8-37B77599AF84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C267EEE4-1C3C-4A0F-87D8-37B77599AF84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C267EEE4-1C3C-4A0F-87D8-37B77599AF84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C267EEE4-1C3C-4A0F-87D8-37B77599AF84}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0C1FDEB4-B086-43AD-9F85-AA73CB82EA54}
+	EndGlobalSection
+EndGlobal
