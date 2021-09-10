@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.IO;
+using System.IO.Compression;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -40,7 +41,7 @@ namespace NewEraLauncher
                 try
                 {
                     File.Copy(@"C:\Users\akula\AppData\\Roaming\.minecraft\launcher_accounts.json", @"C:\NewEraCache\launcher_accounts.json", true);
-                    Directory.Delete(@"C:\Users\akula\AppData\Roaming\.minecraft\", true);
+                    Directory.Delete(@"C:\Users\akula\AppData\Roaming\.minecraft", true);
                 }
                 catch (IOException)
                 {
@@ -60,10 +61,13 @@ namespace NewEraLauncher
                 downloadBar.Value = int.Parse(Math.Truncate(percentage).ToString());
             });
         }
+
         void client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
         {
             this.BeginInvoke((MethodInvoker)delegate {
                 progressLabel.Text = "Completed";
+                ZipFile.ExtractToDirectory(@"C:\NewEraCache\downloaded.zip", @"C:\Users\akula\AppData\Roaming\");
+                File.Copy(@"C:\NewEraCache\launcher_accounts.json", @"C:\Users\akula\AppData\\Roaming\.minecraft\launcher_accounts.json", true);
             });
         }
 
