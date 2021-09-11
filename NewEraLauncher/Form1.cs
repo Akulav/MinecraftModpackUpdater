@@ -12,7 +12,8 @@ namespace NewEraLauncher
     public partial class defaultWindow : Form
     {
         public string[] result;
-        public string appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+        public static string appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+        public string[] deletion_list = { appdata + @"\.minecraft\libraries", appdata + @"\.minecraft\webcache2", appdata + @"\.minecraft\mods", appdata + @"\.minecraft\versions" };
         public defaultWindow()
         {
             InitializeComponent();
@@ -53,21 +54,15 @@ namespace NewEraLauncher
 
         private void startInstall()
         {
-            Thread thread = new Thread(() => {
-                    
-                if (File.Exists(appdata + @"\.minecraft\launcher_accounts.json"))
-                {
-                    File.Copy(appdata + @"\.minecraft\launcher_accounts.json", @"C:\NewEraCache\launcher_accounts.json", true);
-                }
+            Thread thread = new Thread(() =>
+            {
 
-                if (File.Exists(appdata + @"\.minecraft\TLauncher.exe"))
+                for (int i = 0; i < deletion_list.Length; i++)
                 {
-                    File.Copy(appdata + @"\.minecraft\TLauncher.exe", @"C:\NewEraCache\TLauncher.exe", true);
-                }
-
-                if (Directory.Exists(appdata + @"\.minecraft"))
-                {
-                    Directory.Delete(appdata + @"\.minecraft", true);
+                    if (Directory.Exists(deletion_list[i]))
+                    {
+                        Directory.Delete(deletion_list[i], true);
+                    }
                 }
 
             });
@@ -96,7 +91,7 @@ namespace NewEraLauncher
                 }
                 catch (IOException)
                 {
-
+                    MessageBox.Show("An error occured extracting the zip file.");
                 }
 
                 foreach (var srcPath in Directory.GetFiles(@"C:\NewEraCache"))
