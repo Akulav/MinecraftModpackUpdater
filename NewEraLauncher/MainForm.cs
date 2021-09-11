@@ -13,7 +13,15 @@ namespace NewEraLauncher
     {
         public string[] result;
         public static string appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-        public string[] deletion_list = { appdata + @"\.minecraft\libraries", appdata + @"\.minecraft\webcache2", appdata + @"\.minecraft\mods", appdata + @"\.minecraft\versions" };
+
+        //Define here all folders that will be deleted.
+        private string[] deletion_list = { 
+            appdata + @"\.minecraft\libraries", 
+            appdata + @"\.minecraft\webcache2",
+            appdata + @"\.minecraft\mods",
+            appdata + @"\.minecraft\versions",
+            appdata + @"\.minecraft\config"
+        };
         public defaultWindow()
         {
             InitializeComponent();
@@ -56,13 +64,9 @@ namespace NewEraLauncher
         {
             Thread thread = new Thread(() =>
             {
-
                 for (int i = 0; i < deletion_list.Length; i++)
                 {
-                    if (Directory.Exists(deletion_list[i]))
-                    {
-                        Directory.Delete(deletion_list[i], true);
-                    }
+                    DirectoryLib.DeleteFolder(deletion_list[i]);
                 }
 
             });
@@ -84,19 +88,15 @@ namespace NewEraLauncher
         {
             this.BeginInvoke((MethodInvoker)delegate {
                 progressLabel.Text = "Downloaded.";
+                DirectoryLib.DeleteFolder(@"C:\NewEraCache\extracted");
                 try
                 {
-                    ZipFile.ExtractToDirectory(@"C:\NewEraCache\downloaded.zip", appdata);
-                    File.Delete(@"C:\NewEraCache\downloaded.zip");
+                    ZipFile.ExtractToDirectory(@"C:\NewEraCache\downloaded.zip", @"C:\NewEraCache\extracted\");
+                    DirectoryLib.CopyFilesRecursively(@"C:\NewEraCache\extracted\", appdata + @"\.minecraft\");
                 }
-                catch (IOException)
+                catch (IOException iox)
                 {
-                    MessageBox.Show("An error occured extracting the zip file.");
-                }
-
-                foreach (var srcPath in Directory.GetFiles(@"C:\NewEraCache"))
-                {
-                    File.Copy(srcPath, srcPath.Replace(@"C:\NewEraCache", appdata + @"\.minecraft\"), true);
+                    MessageBox.Show(iox.ToString());
                 }
 
                 updateBtn.Enabled = true;
@@ -106,6 +106,7 @@ namespace NewEraLauncher
 
         public void defaultWindow_Load(object sender, EventArgs e)
         {
+
             using (WebClient client = new WebClient())
             {
                 string update_data = client.DownloadString("https://raw.githubusercontent.com/Akulav/MinecraftModpackUpdater/main/modpack_list.txt");
@@ -117,13 +118,10 @@ namespace NewEraLauncher
                         modpackList.Items.Add(result[i]);
                     }
                 }
+                modpackList.Items.Remove("");
             }
-
-            string folderPath = @"C:\NewEraCache";
-            if (!Directory.Exists(folderPath))
-            {
-                Directory.CreateDirectory(folderPath);
-            }
+            DirectoryLib.CreateFolder(@"C:\NewEraCache");
         }
+
     }
 }

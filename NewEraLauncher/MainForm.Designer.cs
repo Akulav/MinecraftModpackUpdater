@@ -29,6 +29,7 @@ namespace NewEraLauncher
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(defaultWindow));
             this.updateBtn = new System.Windows.Forms.Button();
             this.progressLabel = new System.Windows.Forms.Label();
             this.downloadBar = new System.Windows.Forms.ProgressBar();
@@ -88,10 +89,11 @@ namespace NewEraLauncher
             this.Controls.Add(this.downloadBar);
             this.Controls.Add(this.progressLabel);
             this.Controls.Add(this.updateBtn);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "defaultWindow";
             this.ShowIcon = false;
-            this.Text = "New Era Updater 1.0.0 - Made by Caty ";
+            this.Text = "New Era Updater 1.2 - Made by Caty ";
             this.Load += new System.EventHandler(this.defaultWindow_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
