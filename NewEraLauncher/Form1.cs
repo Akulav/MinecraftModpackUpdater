@@ -20,15 +20,24 @@ namespace NewEraLauncher
 
         private void updateBtn_Click(object sender, EventArgs e)
         {
+            //Disable button to prevent errors during install
             updateBtn.Enabled = false;
 
-            //
+            //Select the modpack
             int index = modpackList.SelectedIndex;
 
-            //
+            //Prevent error if no modpack is selected
+            if (index == -1)
+            {
+                MessageBox.Show("Check a modpack to install");
+                goto updateBtnEnd;
+            }
 
+            //Starts the download and installation on different threads
             startDownload(result[index+index+1]);
             startInstall();
+
+        updateBtnEnd:;
         }
 
         private void startDownload(string url)
@@ -45,23 +54,22 @@ namespace NewEraLauncher
         private void startInstall()
         {
             Thread thread = new Thread(() => {
-                try
-                {
-                    File.Copy(appdata+@"\.minecraft\launcher_accounts.json", @"C:\NewEraCache\launcher_accounts.json", true);
-                }
-                catch (IOException)
-                {
                     
+                if (File.Exists(appdata + @"\.minecraft\launcher_accounts.json"))
+                {
+                    File.Copy(appdata + @"\.minecraft\launcher_accounts.json", @"C:\NewEraCache\launcher_accounts.json", true);
                 }
 
-                try
-                {             
+                if (File.Exists(appdata + @"\.minecraft\TLauncher.exe"))
+                {
+                    File.Copy(appdata + @"\.minecraft\TLauncher.exe", @"C:\NewEraCache\TLauncher.exe", true);
+                }
+
+                if (Directory.Exists(appdata + @"\.minecraft"))
+                {
                     Directory.Delete(appdata + @"\.minecraft", true);
                 }
-                catch (IOException)
-                {
 
-                }
             });
             thread.Start();
         }
@@ -84,12 +92,18 @@ namespace NewEraLauncher
                 try
                 {
                     ZipFile.ExtractToDirectory(@"C:\NewEraCache\downloaded.zip", appdata);
-                    File.Copy(@"C:\NewEraCache\launcher_accounts.json", appdata+@"\.minecraft\launcher_accounts.json", true);
+                    File.Delete(@"C:\NewEraCache\downloaded.zip");
                 }
                 catch (IOException)
                 {
 
                 }
+
+                foreach (var srcPath in Directory.GetFiles(@"C:\NewEraCache"))
+                {
+                    File.Copy(srcPath, srcPath.Replace(@"C:\NewEraCache", appdata + @"\.minecraft\"), true);
+                }
+
                 updateBtn.Enabled = true;
                 progressLabel.Text = "Successfully installed.";
             });
