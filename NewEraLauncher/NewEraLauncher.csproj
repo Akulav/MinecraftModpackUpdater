@@ -50,6 +50,9 @@
   <PropertyGroup>
     <ApplicationIcon>Chrisl21-Minecraft-Diamond-Sword.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>NewEraLauncher.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -70,7 +73,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DeletionList.cs" />
     <Compile Include="DirectoryLib.cs" />
+    <Compile Include="Functionality.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

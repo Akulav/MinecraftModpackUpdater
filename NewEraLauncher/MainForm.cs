@@ -1,7 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using System.IO;
-using System.IO.Compression;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -14,14 +12,6 @@ namespace NewEraLauncher
         public string[] result;
         public static string appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
-        //Define here all folders that will be deleted.
-        private string[] deletion_list = { 
-            appdata + @"\.minecraft\libraries", 
-            appdata + @"\.minecraft\webcache2",
-            appdata + @"\.minecraft\mods",
-            appdata + @"\.minecraft\versions",
-            appdata + @"\.minecraft\config"
-        };
         public defaultWindow()
         {
             InitializeComponent();
@@ -39,12 +29,13 @@ namespace NewEraLauncher
             if (index == -1)
             {
                 MessageBox.Show("Check a modpack to install");
+                updateBtn.Enabled = true;
                 goto updateBtnEnd;
             }
 
             //Starts the download and installation on different threads
             startDownload(result[index+index+1]);
-            startInstall();
+            Functionality.startInstall();
 
         updateBtnEnd:;
         }
@@ -56,19 +47,6 @@ namespace NewEraLauncher
                 client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(client_DownloadProgressChanged);
                 client.DownloadFileCompleted += new AsyncCompletedEventHandler(client_DownloadFileCompleted);
                 client.DownloadFileAsync(new Uri(url), @"C:\NewEraCache\downloaded.zip");
-            });
-            thread.Start();
-        }
-
-        private void startInstall()
-        {
-            Thread thread = new Thread(() =>
-            {
-                for (int i = 0; i < deletion_list.Length; i++)
-                {
-                    DirectoryLib.DeleteFolder(deletion_list[i]);
-                }
-
             });
             thread.Start();
         }
@@ -87,17 +65,10 @@ namespace NewEraLauncher
         void client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
         {
             this.BeginInvoke((MethodInvoker)delegate {
-                progressLabel.Text = "Downloaded.";
+                progressLabel.Text = "Installing";
+
                 DirectoryLib.DeleteFolder(@"C:\NewEraCache\extracted");
-                try
-                {
-                    ZipFile.ExtractToDirectory(@"C:\NewEraCache\downloaded.zip", @"C:\NewEraCache\extracted\");
-                    DirectoryLib.CopyFilesRecursively(@"C:\NewEraCache\extracted\", appdata + @"\.minecraft\");
-                }
-                catch (IOException iox)
-                {
-                    MessageBox.Show(iox.ToString());
-                }
+                Functionality.extractInstall();
 
                 updateBtn.Enabled = true;
                 progressLabel.Text = "Successfully installed.";
@@ -106,7 +77,7 @@ namespace NewEraLauncher
 
         public void defaultWindow_Load(object sender, EventArgs e)
         {
-
+            DoubleBuffered = true;
             using (WebClient client = new WebClient())
             {
                 string update_data = client.DownloadString("https://raw.githubusercontent.com/Akulav/MinecraftModpackUpdater/main/modpack_list.txt");

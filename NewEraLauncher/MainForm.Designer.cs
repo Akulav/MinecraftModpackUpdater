@@ -1,7 +1,7 @@
 ﻿
 namespace NewEraLauncher
 {
-    partial class defaultWindow
+    public partial class defaultWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -52,9 +52,9 @@ namespace NewEraLauncher
             this.progressLabel.AutoSize = true;
             this.progressLabel.Location = new System.Drawing.Point(12, 181);
             this.progressLabel.Name = "progressLabel";
-            this.progressLabel.Size = new System.Drawing.Size(306, 13);
+            this.progressLabel.Size = new System.Drawing.Size(311, 13);
             this.progressLabel.TabIndex = 1;
-            this.progressLabel.Text = "*This will reset your config, mods, resourcepack, shader folders.";
+            this.progressLabel.Text = "*This may reset your config, mods, resourcepack, shader folders.";
             // 
             // downloadBar
             // 
@@ -92,7 +92,7 @@ namespace NewEraLauncher
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "defaultWindow";
-            this.Text = "New Era Updater 1.2 - Made by Caty ";
+            this.Text = "New Era Updater 1.3.2 - Made by Caty ";
             this.Load += new System.EventHandler(this.defaultWindow_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -104,8 +104,8 @@ namespace NewEraLauncher
         private System.Windows.Forms.Button updateBtn;
         private System.Windows.Forms.Label progressLabel;
         private System.Windows.Forms.ProgressBar downloadBar;
-        private System.Windows.Forms.Label packDescriptor;
-        private System.Windows.Forms.CheckedListBox modpackList;
+        public System.Windows.Forms.Label packDescriptor;
+        public  System.Windows.Forms.CheckedListBox modpackList;
     }
 }
 
