@@ -17,7 +17,7 @@ namespace NewEraLauncher
             InitializeComponent();
         }
 
-        private void updateBtn_Click(object sender, EventArgs e)
+        private void UpdateBtn_Click(object sender, EventArgs e)
         {
             //Disable button to prevent errors during install
             updateBtn.Enabled = false;
@@ -34,24 +34,24 @@ namespace NewEraLauncher
             }
 
             //Starts the download and installation on different threads
-            startDownload(result[index+index+1]);
-            Functionality.startInstall();
+            StartDownload(result[index+index+1]);
+            Functionality.StartInstall();
 
         updateBtnEnd:;
         }
 
-        private void startDownload(string url)
+        private void StartDownload(string url)
         {
             Thread thread = new Thread(() => {
                 WebClient client = new WebClient();
-                client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(client_DownloadProgressChanged);
-                client.DownloadFileCompleted += new AsyncCompletedEventHandler(client_DownloadFileCompleted);
+                client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(Client_DownloadProgressChanged);
+                client.DownloadFileCompleted += new AsyncCompletedEventHandler(Client_DownloadFileCompleted);
                 client.DownloadFileAsync(new Uri(url), @"C:\NewEraCache\downloaded.zip");
             });
             thread.Start();
         }
 
-        void client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        void Client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
             this.BeginInvoke((MethodInvoker)delegate {
                 double bytesIn = double.Parse(e.BytesReceived.ToString());
@@ -62,20 +62,20 @@ namespace NewEraLauncher
             });
         }
 
-        void client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
+        void Client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
         {
             this.BeginInvoke((MethodInvoker)delegate {
                 progressLabel.Text = "Installing";
 
                 DirectoryLib.DeleteFolder(@"C:\NewEraCache\extracted");
-                Functionality.extractInstall();
+                Functionality.ExtractInstall();
 
                 updateBtn.Enabled = true;
                 progressLabel.Text = "Successfully installed.";
             });
         }
 
-        public void defaultWindow_Load(object sender, EventArgs e)
+        public void DefaultWindow_Load(object sender, EventArgs e)
         {
             DoubleBuffered = true;
             using (WebClient client = new WebClient())

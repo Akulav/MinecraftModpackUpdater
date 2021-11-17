@@ -45,7 +45,7 @@ namespace NewEraLauncher
             this.updateBtn.TabIndex = 0;
             this.updateBtn.Text = "Update To Latest";
             this.updateBtn.UseVisualStyleBackColor = true;
-            this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
+            this.updateBtn.Click += new System.EventHandler(this.UpdateBtn_Click);
             // 
             // progressLabel
             // 
@@ -93,7 +93,7 @@ namespace NewEraLauncher
             this.MaximizeBox = false;
             this.Name = "defaultWindow";
             this.Text = "New Era Updater 1.3.2 - Made by Caty ";
-            this.Load += new System.EventHandler(this.defaultWindow_Load);
+            this.Load += new System.EventHandler(this.DefaultWindow_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

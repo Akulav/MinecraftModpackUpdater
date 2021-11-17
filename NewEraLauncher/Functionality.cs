@@ -8,7 +8,7 @@ namespace NewEraLauncher
     class Functionality
     {
         public static string appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-        public static void startInstall()
+        public static void StartInstall()
         {
             Thread thread = new Thread(() =>
             {
@@ -21,7 +21,7 @@ namespace NewEraLauncher
             thread.Start();
         }
 
-        public static void extractInstall()
+        public static void ExtractInstall()
         {
             try
             {
@@ -30,7 +30,7 @@ namespace NewEraLauncher
             }
             catch (IOException)
             {
-               
+
             }
         }
 
