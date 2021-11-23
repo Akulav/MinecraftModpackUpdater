@@ -94,5 +94,11 @@ namespace NewEraLauncher
             DirectoryLib.CreateFolder(@"C:\NewEraCache");
         }
 
+        private void modpackList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int index = modpackList.SelectedIndex;
+            for (int ix = 0; ix < modpackList.Items.Count; ++ix)
+                if (ix != index) modpackList.SetItemChecked(ix, false);
+        }
     }
 }
