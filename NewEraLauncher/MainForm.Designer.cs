@@ -94,6 +94,7 @@ namespace NewEraLauncher
             this.MaximizeBox = false;
             this.Name = "defaultWindow";
             this.Text = "New Era Updater 1.4.0 - Made by Caty ";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.defaultWindow_FormClosing);
             this.Load += new System.EventHandler(this.DefaultWindow_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

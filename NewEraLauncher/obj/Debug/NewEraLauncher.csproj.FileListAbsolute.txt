@@ -18,3 +18,4 @@ C:\Users\akula\Desktop\MinecraftModpackUpdater\NewEraLauncher\obj\Debug\NewEraLa
 C:\Users\akula\Desktop\MinecraftModpackUpdater\NewEraLauncher\obj\Debug\NewEraLauncher.exe
 C:\Users\akula\Desktop\MinecraftModpackUpdater\NewEraLauncher\obj\Debug\NewEraLauncher.pdb
 C:\Users\akula\Desktop\MinecraftModpackUpdater\NewEraLauncher\obj\Debug\NewEraLauncher.csproj.AssemblyReference.cache
+C:\Users\akula\Desktop\MinecraftModpackUpdater\NewEraLauncher\obj\Debug\NewEraLauncher.csproj.SuggestedBindingRedirects.cache
