@@ -19,3 +19,14 @@ C:\Users\akula\Desktop\MinecraftModpackUpdater\NewEraLauncher\obj\Debug\NewEraLa
 C:\Users\akula\Desktop\MinecraftModpackUpdater\NewEraLauncher\obj\Debug\NewEraLauncher.pdb
 C:\Users\akula\Desktop\MinecraftModpackUpdater\NewEraLauncher\obj\Debug\NewEraLauncher.csproj.AssemblyReference.cache
 C:\Users\akula\Desktop\MinecraftModpackUpdater\NewEraLauncher\obj\Debug\NewEraLauncher.csproj.SuggestedBindingRedirects.cache
+C:\Users\akulav\Documents\GitHub\MinecraftModpackUpdater\NewEraLauncher\obj\Debug\NewEraLauncher.csproj.AssemblyReference.cache
+C:\Users\akulav\Documents\GitHub\MinecraftModpackUpdater\NewEraLauncher\obj\Debug\NewEraLauncher.csproj.SuggestedBindingRedirects.cache
+C:\Users\akulav\Documents\GitHub\MinecraftModpackUpdater\NewEraLauncher\obj\Debug\NewEraLauncher.defaultWindow.resources
+C:\Users\akulav\Documents\GitHub\MinecraftModpackUpdater\NewEraLauncher\obj\Debug\NewEraLauncher.Properties.Resources.resources
+C:\Users\akulav\Documents\GitHub\MinecraftModpackUpdater\NewEraLauncher\obj\Debug\NewEraLauncher.csproj.GenerateResource.cache
+C:\Users\akulav\Documents\GitHub\MinecraftModpackUpdater\NewEraLauncher\obj\Debug\NewEraLauncher.csproj.CoreCompileInputs.cache
+C:\Users\akulav\Documents\GitHub\MinecraftModpackUpdater\NewEraLauncher\obj\Debug\NewEraLauncher.exe
+C:\Users\akulav\Documents\GitHub\MinecraftModpackUpdater\NewEraLauncher\obj\Debug\NewEraLauncher.pdb
+C:\Users\akulav\Documents\GitHub\MinecraftModpackUpdater\NewEraLauncher\bin\Debug\NewEraLauncher.exe.config
+C:\Users\akulav\Documents\GitHub\MinecraftModpackUpdater\NewEraLauncher\bin\Debug\NewEraLauncher.exe
+C:\Users\akulav\Documents\GitHub\MinecraftModpackUpdater\NewEraLauncher\bin\Debug\NewEraLauncher.pdb

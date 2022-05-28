@@ -8,11 +8,12 @@ namespace NewEraLauncher
        
         //Define all folders to be deleted inside .minecraft folder
         public static string[] deletion_list = {
-            appdata + @"\.minecraft\libraries",
-            appdata + @"\.minecraft\webcache2",
+            //appdata + @"\.minecraft\libraries",
+            //appdata + @"\.minecraft\webcache2",
             appdata + @"\.minecraft\mods",
-            appdata + @"\.minecraft\versions",
-            appdata + @"\.minecraft\config"
+            //appdata + @"\.minecraft\versions",
+            appdata + @"\.minecraft\config",
+            appdata + @"\.minecraft\Flan"
         };
     }
 }

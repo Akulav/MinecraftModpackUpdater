@@ -72,6 +72,7 @@ namespace NewEraLauncher
 
                 updateBtn.Enabled = true;
                 progressLabel.Text = "Successfully installed.";
+                DirectoryLib.DeleteFolder(@"C:\NewEraCache");
 
             });
         }
@@ -100,11 +101,6 @@ namespace NewEraLauncher
             int index = modpackList.SelectedIndex;
             for (int ix = 0; ix < modpackList.Items.Count; ++ix)
                 if (ix != index) modpackList.SetItemChecked(ix, false);
-        }
-
-        private void defaultWindow_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            DirectoryLib.DeleteFolder(@"C:\NewEraCache");
         }
     }
 }
