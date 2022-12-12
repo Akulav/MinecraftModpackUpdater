@@ -39,18 +39,18 @@ namespace NewEraLauncher
             // 
             // updateBtn
             // 
-            this.updateBtn.Location = new System.Drawing.Point(12, 67);
+            this.updateBtn.Location = new System.Drawing.Point(12, 132);
             this.updateBtn.Name = "updateBtn";
-            this.updateBtn.Size = new System.Drawing.Size(364, 76);
+            this.updateBtn.Size = new System.Drawing.Size(364, 41);
             this.updateBtn.TabIndex = 0;
-            this.updateBtn.Text = "Update To Latest";
+            this.updateBtn.Text = "Download Mods";
             this.updateBtn.UseVisualStyleBackColor = true;
             this.updateBtn.Click += new System.EventHandler(this.UpdateBtn_Click);
             // 
             // progressLabel
             // 
             this.progressLabel.AutoSize = true;
-            this.progressLabel.Location = new System.Drawing.Point(9, 175);
+            this.progressLabel.Location = new System.Drawing.Point(9, 205);
             this.progressLabel.Name = "progressLabel";
             this.progressLabel.Size = new System.Drawing.Size(311, 13);
             this.progressLabel.TabIndex = 1;
@@ -58,7 +58,7 @@ namespace NewEraLauncher
             // 
             // downloadBar
             // 
-            this.downloadBar.Location = new System.Drawing.Point(12, 149);
+            this.downloadBar.Location = new System.Drawing.Point(12, 179);
             this.downloadBar.Name = "downloadBar";
             this.downloadBar.Size = new System.Drawing.Size(364, 23);
             this.downloadBar.TabIndex = 2;
@@ -76,7 +76,7 @@ namespace NewEraLauncher
             this.modpackList.FormattingEnabled = true;
             this.modpackList.Location = new System.Drawing.Point(12, 12);
             this.modpackList.Name = "modpackList";
-            this.modpackList.Size = new System.Drawing.Size(364, 49);
+            this.modpackList.Size = new System.Drawing.Size(364, 109);
             this.modpackList.TabIndex = 6;
             this.modpackList.SelectedIndexChanged += new System.EventHandler(this.modpackList_SelectedIndexChanged);
             // 
@@ -84,7 +84,7 @@ namespace NewEraLauncher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(391, 198);
+            this.ClientSize = new System.Drawing.Size(391, 227);
             this.Controls.Add(this.modpackList);
             this.Controls.Add(this.packDescriptor);
             this.Controls.Add(this.downloadBar);

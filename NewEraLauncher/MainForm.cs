@@ -65,13 +65,13 @@ namespace NewEraLauncher
         void Client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
         {
             this.BeginInvoke((MethodInvoker)delegate {
-                progressLabel.Text = "Installing";
+                progressLabel.Text = "Downloading";
 
                 DirectoryLib.DeleteFolder(@"C:\NewEraCache\extracted");
                 Functionality.ExtractInstall();
 
                 updateBtn.Enabled = true;
-                progressLabel.Text = "Successfully installed.";
+                progressLabel.Text = "Success";
                 DirectoryLib.DeleteFolder(@"C:\NewEraCache");
 
             });
