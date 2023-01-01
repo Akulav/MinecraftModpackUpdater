@@ -57,7 +57,7 @@ namespace NewEraLauncher
                 double bytesIn = double.Parse(e.BytesReceived.ToString());
                 double totalBytes = double.Parse(e.TotalBytesToReceive.ToString());
                 double percentage = bytesIn / totalBytes * 100;
-                progressLabel.Text = "Downloaded " + e.BytesReceived + " of " + e.TotalBytesToReceive;
+                progressLabel.Text = "Downloaded " + e.BytesReceived/1000/1000 + "MB" + " " + " of " + e.TotalBytesToReceive/1000/1000 + "MB";
                 downloadBar.Value = int.Parse(Math.Truncate(percentage).ToString());
             });
         }

@@ -93,7 +93,7 @@ namespace NewEraLauncher
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "defaultWindow";
-            this.Text = "New Era Updater 1.5.0 - Made by Caty ";
+            this.Text = "New Era Updater 1.6.0 - Made by Caty ";
             this.Load += new System.EventHandler(this.DefaultWindow_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
