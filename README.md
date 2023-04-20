@@ -1,3 +1,7 @@
+# DEPRECATED
+This repository is no longer in development, but a better, with similar functionality application is found at:
+https://github.com/Akulav/AkulavMCLauncher
+
 # MinecraftModpackUpdater
 This program will automatically download and extract latest mods / configs / resourcepacks for you and your friends.
 
